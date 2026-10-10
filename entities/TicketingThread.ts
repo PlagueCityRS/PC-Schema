@@ -1,9 +1,7 @@
 import { Collection, Entity, ManyToOne, OneToMany, PrimaryKey, Property } from '@mikro-orm/core';
-import { TicketingThreadRepository } from '#/db/repositories/TicketingThreadRepository.js';
-import { TicketingMessage } from '#/db/entities/TicketingMessage.js';
-import { Character } from '#/db/Exports.js';
+import { Character, TicketingMessage } from '../SchemaExports.js';
 
-@Entity({ repository: () => TicketingThreadRepository })
+@Entity()
 export class TicketingThread {
     @PrimaryKey({ unique: true, type: 'number' })
     id!: number;

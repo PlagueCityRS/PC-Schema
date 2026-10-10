@@ -1,7 +1,7 @@
 import { Entity, ManyToOne, PrimaryKey, Property } from '@mikro-orm/core';
-import { Offence, OffenceAppealRepository } from '#/db/Exports.js';
+import { Offence } from '../SchemaExports.js';
 
-@Entity({ repository: () => OffenceAppealRepository })
+@Entity()
 export class OffenceAppeal {
     @PrimaryKey({ unique: true, type: 'number' })
     id!: number;

@@ -1,7 +1,6 @@
 import { Entity, PrimaryKey, Property } from '@mikro-orm/core';
-import { KbaseRelationshipRepository } from '#/db/Exports.js';
 
-@Entity({ repository: () => KbaseRelationshipRepository })
+@Entity()
 export class KbaseRelationship {
     @PrimaryKey({ primary: true, type: 'number' })
     child_id!: number;

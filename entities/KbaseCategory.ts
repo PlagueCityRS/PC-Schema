@@ -1,8 +1,7 @@
 import { Entity, ManyToOne, Property } from '@mikro-orm/core';
-import { KbaseItem } from '#/db/entities/KbaseItem.js';
-import { KbaseCategoryRepository } from '#/db/Exports.js';
+import { KbaseItem } from '../SchemaExports.js';
 
-@Entity({ repository: () => KbaseCategoryRepository })
+@Entity()
 export class KbaseCategory {
     @Property({ type: 'boolean' })
     auto_sort: boolean = false;

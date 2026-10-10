@@ -1,5 +1,5 @@
 import { Entity, PrimaryKey, Property, ManyToOne } from '@mikro-orm/core';
-import { Forum, ForumGroup } from '#/db/Exports.js';
+import { Forum, ForumGroup } from '../SchemaExports.js';
 
 @Entity()
 export class ForumPermission {

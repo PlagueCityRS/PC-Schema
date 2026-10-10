@@ -1,7 +1,6 @@
 import { Entity, PrimaryKey, Property } from '@mikro-orm/core';
-import { KbaseViewRepository } from '#/db/Exports.js';
 
-@Entity({ repository: () => KbaseViewRepository })
+@Entity()
 export class KbaseView {
     @PrimaryKey({ primary: true, type: 'number' })
     item_id!: number;

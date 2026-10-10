@@ -1,8 +1,7 @@
 import { Entity, ManyToOne, Property } from '@mikro-orm/core';
-import { KbaseItem } from '#/db/entities/KbaseItem.js';
-import { KbaseArticleRepository } from '#/db/Exports.js';
+import { KbaseItem } from '../SchemaExports.js';
 
-@Entity({ repository: () => KbaseArticleRepository })
+@Entity()
 export class KbaseArticle {
     @Property({ type: 'string', columnType: 'longtext' })
     content!: string;

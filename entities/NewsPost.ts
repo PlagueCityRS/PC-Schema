@@ -1,5 +1,4 @@
 import { Entity, PrimaryKey, Property } from '@mikro-orm/core';
-import { NewsPostRepository } from '#/db/Exports.js';
 
 // id: Generated<number>;
 // category: number;
@@ -9,7 +8,7 @@ import { NewsPostRepository } from '#/db/Exports.js';
 // created: Generated<string>;
 // updated: Generated<string>;
 
-@Entity({ tableName: 'newspost', repository: () => NewsPostRepository })
+@Entity()
 export class NewsPost {
     @PrimaryKey({ unique: true, type: 'number', autoincrement: true })
     id!: number;

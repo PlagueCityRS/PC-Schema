@@ -1,8 +1,8 @@
 import { Entity, PrimaryKey, Property, ManyToOne, ManyToMany, Collection, Unique } from '@mikro-orm/core';
-import { Character, ForumThread, ForumPostRepository } from '#/db/Exports.js';
+import { Character, ForumThread } from '../SchemaExports.js';
 
 @Unique({ properties: ['thread', 'code'] })
-@Entity({ repository: () => ForumPostRepository })
+@Entity()
 export class ForumPost {
     @PrimaryKey({ unique: true, type: 'number' })
     id!: number;

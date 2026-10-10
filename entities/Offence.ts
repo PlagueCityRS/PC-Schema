@@ -1,8 +1,8 @@
 import { Entity, ManyToOne, PrimaryKey, Property } from '@mikro-orm/core';
-import { OffenceRepository, Character, OffenceAppeal } from '#/db/Exports.js';
+import { Character, OffenceAppeal } from '../SchemaExports.js';
 
 // This is a mildly chonky table, a mid-chonk, lil chonker, just a lil mildly chonky guy
-@Entity({ repository: () => OffenceRepository })
+@Entity()
 export class Offence {
     @PrimaryKey({ primary: true, unique: true, type: 'bigint' })
     id!: bigint;

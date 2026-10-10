@@ -1,7 +1,7 @@
 import { Entity, PrimaryKey, Property, OneToMany, Collection } from '@mikro-orm/core';
-import { Forum, ForumCategoryRepository } from '#/db/Exports.js';
+import { Forum } from '../SchemaExports.js';
 
-@Entity({ repository: () => ForumCategoryRepository })
+@Entity()
 export class ForumCategory {
     @PrimaryKey({ unique: true, type: 'number' })
     id!: number;

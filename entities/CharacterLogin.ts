@@ -1,7 +1,7 @@
 import { Entity, Property, OneToOne } from '@mikro-orm/core';
-import { CharacterLoginRepository, Character } from '#/db/Exports.js';
+import { Character } from '../SchemaExports.js';
 
-@Entity({ repository: () => CharacterLoginRepository })
+@Entity()
 export class CharacterLogin {
     @OneToOne(() => Character, { primary: true })
     character!: Character;
