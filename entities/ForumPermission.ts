@@ -1,4 +1,4 @@
-import { Entity, PrimaryKey, Property, ManyToOne } from '@mikro-orm/core';
+import { Entity, PrimaryKey, Property, ManyToOne } from '@mikro-orm/decorators/es';
 import { Forum, ForumGroup } from '../SchemaExports.js';
 
 @Entity()

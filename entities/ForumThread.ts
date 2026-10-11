@@ -1,4 +1,5 @@
-import { Entity, PrimaryKey, Property, ManyToOne, OneToMany, Collection } from '@mikro-orm/core';
+import { Collection } from '@mikro-orm/core';
+import { Entity, PrimaryKey, Property, ManyToOne, OneToMany } from '@mikro-orm/decorators/es';
 import { Character, Forum, ForumPost } from '../SchemaExports.js';
 
 @Entity()

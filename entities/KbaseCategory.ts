@@ -1,4 +1,4 @@
-import { Entity, ManyToOne, Property } from '@mikro-orm/core';
+import { Entity, ManyToOne, Property } from '@mikro-orm/decorators/es';
 import { KbaseItem } from '../SchemaExports.js';
 
 @Entity()

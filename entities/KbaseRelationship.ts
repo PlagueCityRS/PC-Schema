@@ -1,4 +1,4 @@
-import { Entity, PrimaryKey, Property } from '@mikro-orm/core';
+import { Entity, PrimaryKey, Property } from '@mikro-orm/decorators/es';
 
 @Entity()
 export class KbaseRelationship {

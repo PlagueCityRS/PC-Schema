@@ -1,4 +1,4 @@
-import { Entity, Property, OneToOne } from '@mikro-orm/core';
+import { Entity, Property, OneToOne } from '@mikro-orm/decorators/es';
 import { Character } from '../SchemaExports.js';
 
 @Entity()

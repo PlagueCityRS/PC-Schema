@@ -1,4 +1,5 @@
-import { Entity, PrimaryKey, Property, ManyToOne, ManyToMany, Collection, Unique } from '@mikro-orm/core';
+import { Collection } from '@mikro-orm/core';
+import { Entity, PrimaryKey, Property, ManyToOne, ManyToMany, Unique } from '@mikro-orm/decorators/es';
 import { Character, ForumThread } from '../SchemaExports.js';
 
 @Unique({ properties: ['thread', 'code'] })
