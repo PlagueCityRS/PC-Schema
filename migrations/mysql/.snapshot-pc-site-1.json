@@ -3610,6 +3610,23 @@
           "enumItems": [],
           "mappedType": "integer"
         },
+        "p_mod_mute": {
+          "name": "p_mod_mute",
+          "type": "tinyint(1)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "unique": false,
+          "length": null,
+          "precision": 3,
+          "scale": 0,
+          "default": "false",
+          "comment": null,
+          "collation": null,
+          "enumItems": [],
+          "mappedType": "boolean"
+        },
         "profile": {
           "name": "profile",
           "type": "varchar(255)",

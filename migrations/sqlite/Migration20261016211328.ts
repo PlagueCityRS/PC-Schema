@@ -114,6 +114,8 @@ export class Migration20261016211328 extends Migration {
     this.addSql(`create index \`offence_report_offender_id_index\` on \`offence_report\` (\`offender_id\`);`);
     this.addSql(`create index \`offence_report_reviewed_by_id_index\` on \`offence_report\` (\`reviewed_by_id\`);`);
     this.addSql(`pragma foreign_keys = on;`);
+
+    this.addSql(`alter table \`offence_report\` add column \`p_mod_mute\` integer not null default false;`);
   }
 
   override down(): void | Promise<void> {
@@ -264,6 +266,8 @@ export class Migration20261016211328 extends Migration {
     this.addSql(`create index \`offence_report_reporter_id_index\` on \`offence_report\` (\`reporter_id\`);`);
     this.addSql(`create index \`offence_report_reviewed_by_id_index\` on \`offence_report\` (\`reviewed_by_id\`);`);
     this.addSql(`pragma foreign_keys = on;`);
+
+    this.addSql(`alter table \`offence_report\` drop column \`p_mod_mute\`;`);
   }
 
 }

@@ -13,6 +13,9 @@ export class OffenceReport {
     @Property({ type: 'datetime', defaultRaw: sql.now() })
     datetime?: Date & Opt;
 
+    @Property({ type: 'boolean', default: false })
+    pModMute: boolean = false;
+
     @ManyToOne(() => Character)
     reporter!: Character;
 

@@ -88,6 +88,37 @@ export class Migration20261016205835 extends Migration {
 
     this.addSql(`alter table \`offence_report\` modify \`reviewed_by_id\` int unsigned null;`);
     this.addSql(`alter table \`offence_report\` add constraint \`offence_report_reviewed_by_id_foreign\` foreign key (\`reviewed_by_id\`) references \`character\` (\`id\`) on delete set null;`);
+
+    this.addSql(`alter table \`account\` modify \`email\` varchar(255) null;`);
+
+    this.addSql(`alter table \`character\` modify \`signature\` text null;`);
+
+    this.addSql(`alter table \`forum\` modify \`forum_rules\` text null;`);
+
+    this.addSql(`alter table \`forum_group\` modify \`display_string\` varchar(255) null;`);
+    this.addSql(`alter table \`forum_group\` modify \`permissions\` bigint not null default '0';`);
+    this.addSql(`alter table \`forum_group\` modify \`post_decoration_class\` varchar(255) null;`);
+
+    this.addSql(`alter table \`forum_thread\` modify \`escalation_reason\` varchar(255) null;`);
+
+    this.addSql(`alter table \`forum_post\` modify \`display_string\` varchar(255) null;`);
+    this.addSql(`alter table \`forum_post\` modify \`post_decoration_class\` varchar(255) null;`);
+
+    this.addSql(`alter table \`kbase_item\` modify \`display_image\` varchar(255) null;`);
+
+    this.addSql(`alter table \`news_post\` modify \`description\` text null;`);
+    this.addSql(`alter table \`news_post\` modify \`icon\` varchar(255) null;`);
+    this.addSql(`alter table \`news_post\` modify \`slug\` varchar(255) null;`);
+
+    this.addSql(`alter table \`offence\` modify \`appeal_offence_ip\` varchar(255) null;`);
+    this.addSql(`alter table \`offence\` modify \`evidence\` text null;`);
+
+    this.addSql(`alter table \`offence_appeal\` modify \`appeal_response\` text null;`);
+
+    this.addSql(`alter table \`offence_report\` add \`p_mod_mute\` tinyint(1) not null default false;`);
+    this.addSql(`alter table \`offence_report\` modify \`offence_ip\` varchar(255) null;`);
+
+    this.addSql(`alter table \`ticketing_message\` modify \`post_decoration_class\` varchar(255) null;`);
   }
 
   override down(): void | Promise<void> {
@@ -165,6 +196,37 @@ export class Migration20261016205835 extends Migration {
 
     this.addSql(`alter table \`offence_report\` modify \`reviewed_by_id\` int unsigned not null;`);
     this.addSql(`alter table \`offence_report\` add constraint \`offence_report_reviewed_by_id_foreign\` foreign key (\`reviewed_by_id\`) references \`character\` (\`id\`);`);
+
+    this.addSql(`alter table \`account\` modify \`email\` varchar(255) null default 'NULL';`);
+
+    this.addSql(`alter table \`character\` modify \`signature\` text null default ('NULL');`);
+
+    this.addSql(`alter table \`forum\` modify \`forum_rules\` text null default ('NULL');`);
+
+    this.addSql(`alter table \`forum_group\` modify \`post_decoration_class\` varchar(255) null default 'NULL';`);
+    this.addSql(`alter table \`forum_group\` modify \`display_string\` varchar(255) null default 'NULL';`);
+    this.addSql(`alter table \`forum_group\` modify \`permissions\` bigint not null default 0;`);
+
+    this.addSql(`alter table \`forum_post\` modify \`post_decoration_class\` varchar(255) null default 'NULL';`);
+    this.addSql(`alter table \`forum_post\` modify \`display_string\` varchar(255) null default 'NULL';`);
+
+    this.addSql(`alter table \`forum_thread\` modify \`escalation_reason\` varchar(255) null default 'NULL';`);
+
+    this.addSql(`alter table \`kbase_item\` modify \`display_image\` varchar(255) null default 'NULL';`);
+
+    this.addSql(`alter table \`news_post\` modify \`description\` text null default ('NULL');`);
+    this.addSql(`alter table \`news_post\` modify \`slug\` varchar(255) null default 'NULL';`);
+    this.addSql(`alter table \`news_post\` modify \`icon\` varchar(255) null default 'NULL';`);
+
+    this.addSql(`alter table \`offence\` modify \`appeal_offence_ip\` varchar(255) null default 'NULL';`);
+    this.addSql(`alter table \`offence\` modify \`evidence\` text null default ('NULL');`);
+
+    this.addSql(`alter table \`offence_appeal\` modify \`appeal_response\` text null default ('NULL');`);
+
+    this.addSql(`alter table \`offence_report\` drop column \`p_mod_mute\`;`);
+    this.addSql(`alter table \`offence_report\` modify \`offence_ip\` varchar(255) null default 'NULL';`);
+
+    this.addSql(`alter table \`ticketing_message\` modify \`post_decoration_class\` varchar(255) null default 'NULL';`);
   }
 
 }
