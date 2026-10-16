@@ -49,4 +49,7 @@ export class OffenceReport {
 
     @ManyToOne(() => Character, { nullable: true })
     reviewedBy?: Character;
+
+    @Property({ type: 'string' })
+    reviewFeedback?: string;
 }
