@@ -3674,7 +3674,7 @@
           "unsigned": true,
           "autoincrement": false,
           "primary": false,
-          "nullable": false,
+          "nullable": true,
           "unique": false,
           "length": null,
           "precision": null,
@@ -3805,7 +3805,8 @@
           "referencedColumnNames": [
             "id"
           ],
-          "referencedTableName": "character"
+          "referencedTableName": "character",
+          "deleteRule": "set null"
         }
       },
       "comment": null

@@ -44,6 +44,6 @@ export class OffenceReport {
     @Property({ type: 'datetime', defaultRaw: sql.now() })
     reviewedAt?: Date & Opt;
 
-    @ManyToOne(() => Character)
-    reviewedBy!: Character;
+    @ManyToOne(() => Character, { nullable: true })
+    reviewedBy?: Character;
 }
