@@ -8,6 +8,7 @@ export { CharacterLogin } from './entities/CharacterLogin.js';
 /* Offence Module */
 export { Offence } from './entities/Offence.js';
 export { OffenceAppeal } from './entities/OffenceAppeal.js';
+export { OffenceReport } from './entities/OffenceReport.js';
 
 /* News Module */
 export { NewsPost } from './entities/NewsPost.js';

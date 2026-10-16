@@ -1,6 +1,5 @@
 import { Entity, ManyToOne, OneToOne, PrimaryKey, Property } from '@mikro-orm/decorators/es';
-import { Character, OffenceAppeal } from '../SchemaExports.js';
-import { OffenceReport } from './OffenceReport.js';
+import { Character, OffenceAppeal, OffenceReport } from '../SchemaExports.js';
 
 // This is a mildly chonky table, a mid-chonk, lil chonker, just a lil mildly chonky guy
 @Entity()
