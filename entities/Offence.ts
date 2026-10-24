@@ -1,5 +1,5 @@
-import { Entity, ManyToOne, PrimaryKey, Property } from '@mikro-orm/decorators/es';
-import { Character, OffenceAppeal } from '../SchemaExports.js';
+import { Entity, ManyToOne, OneToOne, PrimaryKey, Property } from '@mikro-orm/decorators/es';
+import { Character, OffenceAppeal, OffenceReport } from '../SchemaExports.js';
 
 // This is a mildly chonky table, a mid-chonk, lil chonker, just a lil mildly chonky guy
 @Entity()
@@ -34,8 +34,8 @@ export class Offence {
     @Property({ primary: true, type: 'string', length: 255 })
     ip!: string;
 
-    @Property({ type: 'int', nullable: true })
-    reportId?: number;
+    @OneToOne(() => OffenceReport, (report: OffenceReport) => report.offence, { mappedBy: 'offence', nullable: true })
+    report?: OffenceReport;
 
     @Property({ type: 'float' })
     blackmarks!: number;
