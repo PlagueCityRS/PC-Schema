@@ -1,0 +1,64 @@
+name: Check Companion PR Status
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, edited]
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check Companion PR Statuses
+        uses: actions/github-script@v9
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const rawBody = context.payload.pull_request.body || "";
+            const body = rawBody.replace(/<!--[\s\S]*?-->/g, "");
+
+            const normalized = body.replace(
+              /https?:\/\/github\.com\/([^/\s]+)\/([^/\s]+)\/pull\/(\d+)/gi,
+              "$1/$2#$3"
+            );
+
+            const refs = [...new Set(normalized.match(/[\w.-]+\/[\w.-]+#\d+/g) || [])];
+            if (refs.length === 0) return;
+
+            const blocking = [];
+
+            for (const ref of refs) {
+              const [repoPath, numStr] = ref.split("#");
+              const [owner, repo] = repoPath.split("/");
+              const pull_number = Number(numStr);
+
+              if (
+                owner.toLowerCase() === context.repo.owner.toLowerCase() &&
+                repo.toLowerCase() === context.repo.repo.toLowerCase() &&
+                pull_number === context.issue.number
+              ) {
+                continue;
+              }
+
+              let pr;
+              try {
+                ({ data: pr } = await github.rest.pulls.get({ owner, repo, pull_number }));
+              } catch (err) {
+                if (err.status === 404) {
+                  continue;
+                }
+                throw err;
+              }
+
+              if (pr.state === "closed") continue;
+
+              const { data: reviews } = await github.rest.pulls.listReviews({ owner, repo, pull_number });
+              const approved = reviews.some(r => r.state === "APPROVED");
+
+              if (!approved) {
+                blocking.push(`${ref} (open and not approved)`);
+              }
+            }
+
+            if (blocking.length > 0) {
+              core.setFailed(`Waiting on linked PRs:\n- ${blocking.join("\n- ")}`);
+            }
