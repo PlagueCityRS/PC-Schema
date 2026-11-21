@@ -37,10 +37,24 @@ All of our repositories have 3 permanent branches: `main`, `release`, and `devel
 
 ## Development Workflow
 
-1. **Fork:** Fork the repositories that you need to make changes to.
+1. **Fork:** Fork the repositories that you need to make changes to. Set the upstream with `git remote add upstream <PARENT_REPO_URL>`
 2. **Ticket:** Notify staff that you've picked up a ticket so we can move it from Ready to In progress.
-3. **Branch:** Create an aptly-named branch off `develop`.
+3. **Branch:** Create an aptly-named branch off `develop`. 
+```
+git checkout develop
+git checkout -b <NEW_BRANCH_NAME>
+```
 4. **Develop:** Write your code *within the scope of the ticket.*
+5. **Pull:** Pull the up-to-date code from the relevant develop branch and fix any merge conflicts prior to local testing.
+```b
+// replace all instances of "develop" with the proper branch name from the parent repository if it has a prefix
+git checkout develop
+git fetch upsteam
+git merge --ff-only upstream/develop
+git push origin develop
+git checkout <NEW_BRANCH_NAME>
+git merge develop
+```
 5. **Local Test:** Run a clean build and test locally to ensure nothing was missed.
 6. **Open PR:** Submit a Pull Request back to our public repository targeting `develop`.
 7. **Code Review:** Maintainers will review the code for quality and standards.
