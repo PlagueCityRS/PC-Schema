@@ -18,7 +18,7 @@ The TypeScript port of `Client-Java` that we use (and recommend). TypeScript run
 This is where the magic happens. This repository contains the core game engine, login server, friend server, and logging server, along with the bundled webclient from `Client-TS`. It does **not** contain content scripts (quests, dialogue, item interactions, skills, etc.).
 
 ### Content
-This repository contains all content scripts and assets, and is where most day-to-day development happens. It works in conjunction with `Engine-TS` to create a playable game server. **Important:** You must clone `Content` into the **same parent directory** as `Engine-TS`, as the `Engine-TS` build script looks for `../Content` to verify and load scripts and assets prior to serving.
+This repository contains all content scripts and assets, and is where most day-to-day development happens. It works in conjunction with `Engine-TS` to create a playable game server. **Important:** You must clone `Content` into the **same parent directory** as `Engine-TS`, as the `Engine-TS` build script looks for `../content` to verify and load scripts and assets prior to serving. **If you are using a FAT32 filesystem, you must rename the local repository directory to be `content` with a lowercase c.**
 
 ### PC-Schema
 Unique to Plague City, this repository holds our database schema and migration scripts. Because our website and game server are intertwined, `PC-Schema` is loaded into dependent projects as a Git submodule. This gives us a single source of truth so database states never desync across services.
@@ -38,7 +38,7 @@ All of our repositories have 3 permanent branches: `main`, `release`, and `devel
 ## Development Workflow
 
 1. **Fork:** Fork the repositories that you need to make changes to.
-2. **Ticket:** Choose a ticket from the **Ready** column in our project board and move it to the **In progress** column.
+2. **Ticket:** Notify staff that you've picked up a ticket so we can move it from Ready to In progress.
 3. **Branch:** Create an aptly-named branch off `develop`.
 4. **Develop:** Write your code *within the scope of the ticket.*
 5. **Local Test:** Run a clean build and test locally to ensure nothing was missed.
